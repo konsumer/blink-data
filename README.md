@@ -101,5 +101,5 @@ blink.user().then(console.log)
 
 ## credit
 
-Big shout-out to [MattTW's BlinkMonitorProtocol](https://github.com/MattTW/BlinkMonitorProtocol/). This is totally generated from that.
+Big shout-out to [MattTW's BlinkMonitorProtocol](https://github.com/MattTW/BlinkMonitorProtocol/). This is totally generated from that. [bling-viewer](https://github.com/lurume84/bling-viewer) is also great, and helpwed work out some parts.
 
