@@ -1,7 +1,7 @@
 {
   "name": "blink-data",
   "version": "0.0.0",
-  "description": "",
+  "description": "Interact with blink camera servers in javascript",
   "src": "src/index.js",
   "scripts": {
     "test": "jest"

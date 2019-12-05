@@ -54,4 +54,14 @@ describe('blink-data', () => {
     expect(r.id).toBeDefined()
     expect(r.thumbnail).toBeDefined()
   })
+
+  it.skip('should be able to get a thumbnail.', async () => {
+    const r = await blink.thumbnail(network.network_id, network.cameras[0].id)
+    console.log(r)
+  })
+
+  it.skip('should be able to get a liveview.', async () => {
+    const r = await blink.liveview(network.network_id, network.cameras[0].id)
+    console.log(r)
+  })
 })

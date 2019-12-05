@@ -61,6 +61,20 @@ export class Blink {
       .then(r => r.json())
       .then(r => r.camera_status)
   }
+
+  // get thumbnail data
+  // TODO: this is busted, need to check network traffic
+  thumbnail (network, camera) {
+    return fetch(`${this.baseUrl}/network/${network}/camera/${camera}/thumbnail`, { headers: this.headers })
+      .then(r => r.json())
+  }
+
+  // get live-view data
+  // TODO: this is busted, need to check network traffic
+  liveview (network, camera) {
+    return fetch(`${this.baseUrl}/api/v3/networks/${network}/cameras/${camera}/liveview`, { headers: this.headers })
+      .then(r => r.json())
+  }
 }
 
 export default Blink
