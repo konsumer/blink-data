@@ -1,0 +1,28 @@
+{
+  "name": "blink-data",
+  "version": "0.0.0",
+  "description": "",
+  "src": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/blink-data.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/blink-data/issues"
+  },
+  "homepage": "https://github.com/konsumer/blink-data#readme",
+  "dependencies": {
+    "popsicle": "^12.0.5"
+  },
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "jest": "^24.9.0",
+    "microbundle": "^0.11.0"
+  }
+}
