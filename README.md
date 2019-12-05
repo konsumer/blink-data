@@ -2,7 +2,7 @@
 
 Interact with blink camera servers in javascript
 
-This will allow you to interact with [blink cameras](https://blinkforhome.com/). You can use it in node, or a browser (with CORS security disabled.)
+This will allow you to interact with [blink cameras](https://blinkforhome.com/). You can use it in node, electron, or a browser (with CORS security disabled.)
 
 ## install
 
@@ -102,3 +102,4 @@ blink.user().then(console.log)
 ## credit
 
 Big shout-out to [MattTW's BlinkMonitorProtocol](https://github.com/MattTW/BlinkMonitorProtocol/). This is totally generated from that.
+
