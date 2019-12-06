@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/konsumer/blink-data.git"
   },
-  "keywords": [],
+  "keywords": ["blink", "camera", "api"],
   "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org)",
   "license": "MIT",
   "bugs": {
