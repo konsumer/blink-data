@@ -24,7 +24,7 @@ async function run () {
   // get current user-info
   const user = await blink.user()
   console.log(user)
-  
+
   // get list of current user's networks
   const networks = await blink.networks()
   console.log(networks)
@@ -44,6 +44,8 @@ async function run () {
 
 run()
 ```
+
+I haven't setup API-docs yet, but you can see usage examples iun the [unit-test](./src/blink-data.test.js).
 
 ### browser
 
@@ -67,6 +69,14 @@ const win = new BrowserWindow({
   webPreferences: { webSecurity: false }
 })
 ```
+
+Alternatively, if you want to do it all in IPC-space, you can:
+
+```js
+const Blink = require('electron').remote.require('blink-data')
+```
+
+And CORS-security should be disabled for just blink.
 
 ### rehydrate
 
@@ -97,7 +107,7 @@ blink.user().then(console.log)
 
 ## related
 
-* [Here]() is my desktop-client, using electron.
+* [Here](https://github.com/konsumer/blink-desktop) is my desktop-client, using electron.
 
 ## credit
 

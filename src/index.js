@@ -1,79 +1,57 @@
-import { fetch } from 'popsicle'
+import * as api from './api'
 
 export class Blink {
-  constructor (baseUrl = 'https://rest.prod.immedia-semi.com') {
-    this.baseUrl = baseUrl
-  }
-
   // login and store credentials & headers
   login (email, password) {
-    return fetch(`${this.baseUrl}/login`, { method: 'POST', body: JSON.stringify({ email, password }) })
-      .then(r => r.json())
+    return api.login({ email, password })
       .then(info => {
         this.hydrate(info.authtoken.authtoken, info.account.id, Object.keys(info.region)[0])
         return info
       })
   }
 
-  // rehydrate the object, so you don't have to log back in
-  hydrate (token, account, region = 'u004') {
-    this.headers = {
-      TOKEN_AUTH: token,
-      ACCOUNT_ID: account
-    }
-    this.baseUrl = this.baseUrl.replace('rest.prod', `rest-${region}`)
-  }
-
-  // proxy for binary URLs (media)
-  proxy (url) {
-    return fetch(`${this.baseUrl}/${url}`, { headers: this.headers })
-      .then(r => r.body)
+  // rehydrate with token, id & region, so you don't have to log back in
+  hydrate (token, account, tier = 'u004') {
+    this.headers = { TOKEN_AUTH: token, ACCOUNT_ID: account }
+    this.tier = tier
   }
 
   // get current user-info
   user () {
-    return fetch(`${this.baseUrl}/user`, { headers: this.headers })
-      .then(r => r.json())
+    return api.getUser(this.tier, { headers: this.headers })
   }
 
-  // get list of current user's networks
+  // get list of current user's networks & battery info
   networks () {
-    return fetch(`${this.baseUrl}/api/v1/camera/usage`, { headers: this.headers })
-      .then(r => r.json())
+    return api.batteryUsage(this.tier, { headers: this.headers })
   }
 
   // get details about a network
-  network (id) {
-    return fetch(`${this.baseUrl}/network/${id}`, { headers: this.headers })
-      .then(r => r.json())
-      .then(({ network }) => network)
+  network (network) {
+    return api.network(this.tier, network, { headers: this.headers }).then(r => r.network)
   }
 
   // get a list of videos
   videos (page = 0, since = new Date(0)) {
-    return fetch(`${this.baseUrl}/api/v1/accounts/${this.headers.ACCOUNT_ID}/media/changed?since=${since.toISOString()}&page=${page}`, { headers: this.headers })
-      .then(r => r.json())
+    return api.videos(this.tier, this.headers.ACCOUNT_ID, since, page, { headers: this.headers })
   }
 
   // get details about a camera
   camera (network, camera) {
-    return fetch(`${this.baseUrl}/network/${network}/camera/${camera}`, { headers: this.headers })
-      .then(r => r.json())
+    return api.cameraCommandStatus(this.tier, network, camera, { headers: this.headers })
       .then(r => r.camera_status)
   }
 
-  // get thumbnail data
-  // TODO: this is busted, need to check network traffic
+  // take a thumbnail for a camera
+  // this just triggers and returns info
   thumbnail (network, camera) {
-    return fetch(`${this.baseUrl}/network/${network}/camera/${camera}/thumbnail`, { headers: this.headers })
-      .then(r => r.json())
+    return api.takeSnapshot(this.tier, network, camera, {}, { headers: this.headers })
   }
 
-  // get live-view data
-  // TODO: this is busted, need to check network traffic
+  // get liveview for a camera
   liveview (network, camera) {
-    return fetch(`${this.baseUrl}/api/v3/networks/${network}/cameras/${camera}/liveview`, { headers: this.headers })
-      .then(r => r.json())
+    // return api.liveView(this.tier, network, camera, {}, { headers: this.headers })
+    return api.liveViewV5(this.tier, this.headers.ACCOUNT_ID, network, camera, {}, { headers: this.headers })
   }
 }
 
