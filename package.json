@@ -2,9 +2,13 @@
   "name": "blink-data",
   "version": "0.0.1",
   "description": "Interact with blink camera servers in javascript",
-  "src": "src/index.js",
+  "source": "src/index.js",
+  "main": "dist/blink-data.js",
+  "module": "dist/blink-data.mjs",
+  "unpkg": "dist/foo.umd.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "microbundle"
   },
   "repository": {
     "type": "git",
