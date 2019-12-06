@@ -64,6 +64,6 @@ describe('blink-data', () => {
 
   it('should be able to get a liveview.', async () => {
     const r = await blink.liveview(network.network_id, network.cameras[0].id)
-    console.log(r)
+    // this will probly be busy from previous
   })
 })

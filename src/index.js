@@ -44,14 +44,21 @@ export class Blink {
 
   // take a thumbnail for a camera
   // this just triggers and returns info
+  // might also trigger { message: 'System is busy, please wait', code: 307 } if busy
   thumbnail (network, camera) {
     return api.takeSnapshot(this.tier, network, camera, {}, { headers: this.headers })
   }
 
   // get liveview for a camera
+  // might also trigger { message: 'System is busy, please wait', code: 307 } if busy
   liveview (network, camera) {
     // return api.liveView(this.tier, network, camera, {}, { headers: this.headers })
     return api.liveViewV5(this.tier, this.headers.ACCOUNT_ID, network, camera, {}, { headers: this.headers })
+  }
+
+  // geta nice summary for basic usage
+  summary () {
+    return api.homescreenV3(this.tier, this.headers.ACCOUNT_ID, { headers: this.headers })
   }
 }
 

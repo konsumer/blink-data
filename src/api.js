@@ -1,5 +1,10 @@
 import { fetch } from 'popsicle'
 
+// this is the full API, seperated for easy reference
+// tier is Object.keys(info.region)[0] from login
+// all calls except login use headers.TOKEN_AUTH & headers.ACCOUNT_ID (info.authtoken.authtoken, info.account.id from login)
+// account id is headers.ACCOUNT_ID
+
 export const client = {
   get: (url, options) => fetch(url, options).then(r => r.json()),
   post: (url, input, options) => fetch(url, { method: 'POST', ...options, body: JSON.stringify(input) }).then(r => r.json())
