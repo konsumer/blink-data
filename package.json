@@ -1,6 +1,6 @@
 {
   "name": "blink-data",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Interact with blink camera servers in javascript",
   "src": "src/index.js",
   "scripts": {
@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/konsumer/blink-data.git"
   },
-  "keywords": ["blink", "camera", "api"],
+  "keywords": [
+    "blink",
+    "camera",
+    "api"
+  ],
   "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org)",
   "license": "MIT",
   "bugs": {
