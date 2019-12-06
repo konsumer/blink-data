@@ -45,7 +45,7 @@ async function run () {
 run()
 ```
 
-I haven't setup API-docs yet, but you can see usage examples iun the [unit-test](./src/blink-data.test.js).
+I haven't setup API-docs yet, but you can see usage examples iun the [unit-test](https://github.com/konsumer/blink-data/blob/master/src/blink-data.test.js).
 
 ### browser
 
