@@ -42,23 +42,79 @@ export class Blink {
       .then(r => r.camera_status)
   }
 
+  // geta nice summary for basic usage (homescreen)
+  summary () {
+    return api.homescreenV3(this.tier, this.headers.ACCOUNT_ID, { headers: this.headers })
+  }
+
+  // Obtain information about the Blink Sync Module on the given network.
+  syncmodule (network) {
+    return api.syncmodule(this.tier, network, { headers: this.headers })
+      .then(r => r.syncmodule)
+  }
+
   // take a thumbnail for a camera
-  // this just triggers and returns info
+  // this just triggers, need to loop-check
   // might also trigger { message: 'System is busy, please wait', code: 307 } if busy
   thumbnail (network, camera) {
     return api.takeSnapshot(this.tier, network, camera, {}, { headers: this.headers })
   }
 
   // get liveview for a camera
+  // this just triggers, need to do commandPolling
   // might also trigger { message: 'System is busy, please wait', code: 307 } if busy
   liveview (network, camera) {
     // return api.liveView(this.tier, network, camera, {}, { headers: this.headers })
     return api.liveViewV5(this.tier, this.headers.ACCOUNT_ID, network, camera, {}, { headers: this.headers })
   }
 
-  // geta nice summary for basic usage
-  summary () {
-    return api.homescreenV3(this.tier, this.headers.ACCOUNT_ID, { headers: this.headers })
+  // Arm the given network (start recording/reporting motion events)
+  // this just triggers, need to do commandPolling
+  arm (network) {
+    return api.armDisarmNetwork(this.tier, network, 'arm', {}, { headers: this.headers })
+  }
+
+  // Disarm the given network (stop recording/reporting motion events)
+  // this just triggers, need to do commandPolling
+  disarm (network) {
+    return api.armDisarmNetwork(this.tier, network, 'disarm', {}, { headers: this.headers })
+  }
+
+  // Gets camera sensor information
+  sensor (network, camera) {
+    return api.loadCameraStatus(this.tier, network, camera, { headers: this.headers })
+  }
+
+  // disable motion-detection for a single camera
+  disableCamera (network, camera) {
+    return api.cameraMotion(this.tier, network, camera, 'disable', {}, { headers: this.headers })
+  }
+
+  // enable motion-detection for a single camera
+  enableCamera (network, camera) {
+    return api.cameraMotion(this.tier, network, camera, 'enable', {}, { headers: this.headers })
+  }
+
+  // Gets information about devices that have connected to the blink service
+  clients () {
+    return api.clients(this.tier, { headers: this.headers })
+      .then(r => r.clients)
+  }
+
+  // Gets information about supported regions (use for this.tier)
+  regions () {
+    return api.getRegions(this.tier, { headers: this.headers })
+  }
+
+  // Gets information about system health
+  health () {
+    return api.health(this.tier, { headers: this.headers })
+      .then(r => r.health)
+  }
+
+  // Gets information about programs
+  programs (network) {
+    return api.getPrograms(this.tier, network, { headers: this.headers })
   }
 }
 

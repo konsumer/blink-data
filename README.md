@@ -105,6 +105,13 @@ blink.hydrate(token, id, region)
 blink.user().then(console.log)
 ```
 
+## TODO
+
+* Still need to do support programs
+* There are a lot of other API endpoints to wrap
+* need to use commandPolling to check for things finishing, maybe make a nice fancy event-pipe
+* need to work out video proxy for `rtsps://`. [this](https://www.npmjs.com/package/node-rtsp-stream) should help.
+
 ## related
 
 * [Here](https://github.com/konsumer/blink-desktop) is my desktop-client, using electron.

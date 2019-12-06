@@ -12,6 +12,10 @@ export const client = {
 
 export const videos = (tier, accountID, since, page = 0, options) => client.get(`https://rest-${tier}.immedia-semi.com/api/v1/accounts/${accountID}/media/changed?since=${since.toISOString()}&page=${page}`, options)
 export const network = (tier, network, options) => client.get(`https://rest-${tier}.immedia-semi.com/network/${network}`, options)
+export const syncmodule = (tier, network, options) => client.get(`https://rest-${tier}.immedia-semi.com/network/${network}/syncmodules`, options)
+export const cameras = (tier, network, options) => client.get(`https://rest-${tier}.immedia-semi.com/network/${network}/cameras`, options)
+export const clients = (tier, options) => client.get(`https://rest-${tier}.immedia-semi.com/account/clients`, options)
+export const health = (tier, options) => client.get(`https://rest-${tier}.immedia-semi.com/health`, options)
 
 export const accountOptions = (tier, options) => client.get(`https://rest-${tier}.immedia-semi.com/api/v1/account/options`, options)
 export const acknowledgeNotification = (tier, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/api/v2/notification`, input, options)
