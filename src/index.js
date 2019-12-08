@@ -122,6 +122,12 @@ export class Blink {
   get (url) {
     return api.fetch(`https://rest-${this.tier}.immedia-semi.com${url}`, { headers: this.headers })
   }
+
+  // get status of command by command-id (from  lv_relay, arm, disarm, thumbnail, clip)
+  // TODO: use this to poll for completion so these commands can wait for that
+  commandStatus (network, command) {
+    return api.commandPolling(this.tier, network, command, { headers: this.headers })
+  }
 }
 
 export default Blink

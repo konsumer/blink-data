@@ -87,7 +87,6 @@ export const terminateOnboardingCommand = (tier, network, command, input, option
 export const updateAccount = (tier, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/account/update`, input, options)
 export const updateCheck = (tier, options) => client.get(`https://rest-${tier}.immedia-semi.com/api/v1/fw/app/update_check`, options)
 export const updateCommand = (tier, network, command, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/network/${network}/command/${command}/update/`, input, options)
-export const updateCommandSync = (tier, network, command, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/network/${network}/command/${command}/update/`, input, options)
 export const updateNetworkSaveAllLiveViews = (tier, network, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/network/${network}/update`, input, options)
 export const updateProgram = (tier, network, program, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/api/v1/networks/${network}/programs/${program}/update`, input, options)
 export const updateSiren = (tier, network, siren, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/api/v1/networks/${network}/sirens/${siren}/update`, input, options)
