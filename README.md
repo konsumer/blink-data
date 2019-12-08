@@ -107,10 +107,11 @@ blink.user().then(console.log)
 
 ## TODO
 
-* Still need to do support programs
+* Still need to support programs
 * There are a lot of other API endpoints to wrap
-* need to use commandPolling to check for things finishing, maybe make a nice fancy event-pipe
+* need to use commandPolling to check for things finishing and resolve/reject when finished
 * need to work out video proxy for `rtsps://`. [this](https://www.npmjs.com/package/node-rtsp-stream) should help.
+* Better cross-platform (browser vs node) binary support for images & videos
 
 ## related
 
