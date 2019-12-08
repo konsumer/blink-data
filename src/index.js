@@ -123,6 +123,11 @@ export class Blink {
     return api.fetch(`https://rest-${this.tier}.immedia-semi.com${url}`, { headers: this.headers })
   }
 
+  // Get events for a given network (sync module)
+  events (network) {
+    return api.events(this.tier, network, { headers: this.headers })
+  }
+
   // get status of command by command-id (from  lv_relay, arm, disarm, thumbnail, clip)
   // TODO: use this to poll for completion so these commands can wait for that
   commandStatus (network, command) {

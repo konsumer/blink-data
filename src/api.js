@@ -18,6 +18,7 @@ export const syncmodule = (tier, network, options) => client.get(`https://rest-$
 export const cameras = (tier, network, options) => client.get(`https://rest-${tier}.immedia-semi.com/network/${network}/cameras`, options)
 export const clients = (tier, options) => client.get(`https://rest-${tier}.immedia-semi.com/account/clients`, options)
 export const health = (tier, options) => client.get(`https://rest-${tier}.immedia-semi.com/health`, options)
+export const events = (tier, network, options) => client.get(`https://rest-${tier}.immedia-semi.com/events/network/${network}`, options)
 
 export const accountOptions = (tier, options) => client.get(`https://rest-${tier}.immedia-semi.com/api/v1/account/options`, options)
 export const acknowledgeNotification = (tier, input, options) => client.post(`https://rest-${tier}.immedia-semi.com/api/v2/notification`, input, options)
