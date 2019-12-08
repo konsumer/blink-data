@@ -116,6 +116,12 @@ export class Blink {
   programs (network) {
     return api.getPrograms(this.tier, network, { headers: this.headers })
   }
+
+  // proxy GET with credentials for correct tier
+  // TODO: this is for binaries, so should abstract binary body blob/buffer stuff for cross-platform (browser vs node)
+  get (url) {
+    return api.fetch(`https://rest-${this.tier}.immedia-semi.com${url}`, { headers: this.headers })
+  }
 }
 
 export default Blink

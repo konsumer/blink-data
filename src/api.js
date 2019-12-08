@@ -5,6 +5,8 @@ import { fetch } from 'popsicle'
 // all calls except login use headers.TOKEN_AUTH & headers.ACCOUNT_ID (info.authtoken.authtoken, info.account.id from login)
 // account id is headers.ACCOUNT_ID
 
+export { fetch }
+
 export const client = {
   get: (url, options) => fetch(url, options).then(r => r.json()),
   post: (url, input, options) => fetch(url, { method: 'POST', ...options, body: JSON.stringify(input) }).then(r => r.json())
